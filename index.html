@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최고 평점 영화 리스트</title>
     <script type="module">
+
+        const $card = document.querySelector("#card");
+
         const options = {
             method: 'GET',
             headers: {
@@ -23,15 +26,15 @@
             let row = data["results"];
             console.log(row);
             for (let movie of row) {
-            let title = movie["title"];
-            let id = movie['id'];
-            let overview = movie['overview'];
-            let poster_path = "https://image.tmdb.org/t/p/w500" + movie['poster_path'];
-            let vote_average = movie['vote_average'];
+                let title = movie["title"];
+                let id = movie['id'];
+                let overview = movie['overview'];
+                let poster_path = "https://image.tmdb.org/t/p/w500" + movie['poster_path'];
+                let vote_average = movie['vote_average'];
 
-            let temp_html = `<div class="col">
+                let temp_html = `<div class="col">
                     <div class="card h-100">
-                        <img src="${poster_path}"
+                        <img src="${poster_path}"Beautifu
                             class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">${title}</h5>
@@ -41,10 +44,13 @@
                     </div>
                 </div>
                 `;
-            console.log(temp_html);
-            // $("#card").append(temp_html);
-            document.querySelector("#card").append(temp_html);
-        }
+                console.log(temp_html);
+                // $("#card").append(temp_html);
+                // document.querySelector("#card").append(temp_html);
+                // innerHTML함수를 이용하여 붙히는 방법이 있지 않을까?
+                $card.innerHTML = temp_html;
+
+            }
         });
 
         document.querySelector("#card").click(async function () {
@@ -52,7 +58,7 @@
         })
 
         document.querySelector("#button-addon2").click(async function () {
-        	location.href = 'index2.html';
+            location.href = 'index2.html';
         })
 
     </script>
@@ -66,7 +72,8 @@
             width: 1200px;
             margin: 20px auto 20px auto;
         }
-        .card{
+
+        .card {
             background-position: center;
             background-size: cover;
         }

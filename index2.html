@@ -7,6 +7,7 @@
     <title>최고 평점 영화 리스트</title>
     <script type="module">
         const $userInput = document.querySelector("#searchtitle");
+        const $card = document.querySelector("#card");
 
         const options = {
             method: 'GET',
@@ -35,7 +36,8 @@
             if (title == searchingtitle) {
                     console.log(temp_html);
                     // $("#card").append(temp_html);
-                    document.querySelector("#card").append(temp_html);
+                    // document.querySelector("#card").append(temp_html);
+                    $card.innerHTML = temp_html;
                 }
             }
         })
