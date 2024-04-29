@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>최고 평점 영화 리스트</title>
     <script type="module">
+        const $userInput = document.querySelector("#searchtitle");
+
         const options = {
             method: 'GET',
             headers: {
@@ -23,38 +25,23 @@
             let row = data["results"];
             console.log(row);
             for (let movie of row) {
-            let title = movie["title"];
-            let id = movie['id'];
-            let overview = movie['overview'];
-            let poster_path = "https://image.tmdb.org/t/p/w500" + movie['poster_path'];
-            let vote_average = movie['vote_average'];
+                let title = movie["title"];
+                let id = movie['id'];
+                let overview = movie['overview'];
+                let poster_path = "https://image.tmdb.org/t/p/w500" + movie['poster_path'];
+                let vote_average = movie['vote_average'];
 
-            let temp_html = `<div class="col">
-                    <div class="card h-100">
-                        <img src="${poster_path}"
-                            class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">${title}</h5>
-                                <p class="card-text">${overview}</p>
-                                <p class="card-text">rating: ${vote_average}</p>
-                            </div>
-                    </div>
-                </div>
-                `;
-            console.log(temp_html);
-            // $("#card").append(temp_html);
-            document.querySelector("#card").append(temp_html);
-        }
-        });
-
-        document.querySelector("#card").click(async function () {
-            alert(`id: ${id}`)
+                let searchingtitle = $userInput.value;
+            if (title == searchingtitle) {
+                    console.log(temp_html);
+                    // $("#card").append(temp_html);
+                    document.querySelector("#card").append(temp_html);
+                }
+            }
         })
-
-        document.querySelector("#button-addon2").click(async function () {
-        	location.href = 'index2.html';
-        })
-
+            document.querySelector("#card").click(async function () {
+                alert(`id: ${id}`)
+            })
     </script>
 
     <style>
@@ -66,7 +53,8 @@
             width: 1200px;
             margin: 20px auto 20px auto;
         }
-        .card{
+
+        .card {
             background-position: center;
             background-size: cover;
         }
@@ -79,9 +67,9 @@
     </header>
     <div class="input-group mb-3">
         <span style="font-size: larger;">영화 검색 :</span>
-        <input type="text" class="form-control" placeholder="영화 제목을 입력해보세요" aria-label="Recipient's username"
+        <input type="text" id ="searchtitle" class="form-control" placeholder="영화 제목을 입력해보세요" aria-label="Recipient's username"
             aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2">검색</button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="searchPost()">검색</button>
     </div>
     <br>
     <hr />
