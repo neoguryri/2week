@@ -1,0 +1,45 @@
+.input-group>input {
+    font-size: larger;
+}
+
+
+#card-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+}
+
+.movie-card {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.24);
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    justify-self: center;
+    background-color: var(--bg-card-color);
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 100ms ease-in;
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+
+.movie-card:hover {
+    transform: scale(1.02);
+}
+
+
+#search-form {
+    text-align: center;
+    padding: 20px 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
